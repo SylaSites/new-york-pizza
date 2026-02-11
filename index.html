@@ -1,45 +1,672 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sq">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pica Restaurant</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <div class="hero">
-            <h1>Mirë se vini në Pica Restaurant</h1>
-            <p>Restoranti më i mirë për pizza në qytet!</p>
-            <a href="#menu" class="btn">Shikoni Menunë</a>
-        </div>
-    </header>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New York Pizza - Shkodër</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&amp;family=Lato:wght@400;500&amp;display=swap" rel="stylesheet">
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+        }
+
+        .app-wrapper {
+            width: 100%;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: #fafafa;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 0.8rem;
+            margin-left: 2rem;
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            padding-left: 2rem;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: #dc2626;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #fbbf24;
+            color: #1f2937;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            background: #f59e0b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #dc2626;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #9ca3af;
+            border: 2px dashed #9ca3af;
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .menu-info {
+            padding: 1.5rem;
+        }
+
+        .menu-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-info p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #dc2626;
+        }
+
+        /* Menu Display Section */
+        .menu-display-section {
+            margin-top: 3rem;
+        }
+
+        .menu-display-box {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #9ca3af;
+            border: 2px dashed #9ca3af;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            font-family: 'Playfair Display', serif;
+            color: #dc2626;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: #6b7280;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #fbbf24;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            nav {
+                padding: 0 1rem;
+                flex-wrap: wrap;
+            }
+
+            .language-switcher {
+                margin-left: 0;
+                border-left: none;
+                padding-left: 0;
+                margin-top: 0.5rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            main {
+                padding: 0 1rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .menu-display-box {
+                height: 250px;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="app-wrapper"><!-- Header & Navigation -->
+   <header>
+    <nav>
+     <div class="logo">
+      🍕 <span id="nav-brand">New York Pizza</span>
+     </div>
+     <div style="display: flex; align-items: center;">
+      <ul class="nav-links"><a onclick="scrollToSection('menu')" id="nav-menu">Menu</a> <a onclick="scrollToSection('about')" id="nav-about">Rreth Nesh</a> <a onclick="scrollToSection('contact')" id="nav-contact">Na Kontaktoni</a>
+      </ul>
+      <div class="language-switcher"><button class="lang-btn active" onclick="changeLanguage('sq')" id="lang-sq">SQ</button> <button class="lang-btn" onclick="changeLanguage('en')" id="lang-en">EN</button>
+      </div>
+     </div>
+    </nav>
+   </header><!-- Hero Section -->
+   <section class="hero">
+    <div class="hero-content">
+     <h1 id="hero-title">New York Pizza</h1>
+     <p id="hero-subtitle">Pica autentike ne zemer te Shkodres</p><button class="cta-button" onclick="scrollToSection('contact')" id="btn-order">Porosit Tani</button>
+    </div>
+   </section><!-- Main Content -->
+   <main><!-- About Section -->
+    <section id="about">
+     <h2 id="about-title">Rreth Nesh</h2>
+     <div class="about-container">
+      <div class="about-content">
+       <p id="about-p1">Mirë se vini në New York Pizza, vendi ku tradita ndesh inovacionin! Në zemrën e Shkodër, ne sjellim të njëjtën spirit dhe shijen autentike të picave të famsshme të Nju Jorkut.</p>
+       <p id="about-p2">Me më shumë se 15 vite përvojë, ekipi ynë përpunon çdo pice me ingredientë të freskëta. Vizitoni ne sot dhe zbuloni pse jam bërë preferenca e Shkodraneve!</p>
+      </div><!-- ========== IMAGE PLACEHOLDER - EDIT THIS ========== --> <!-- Replace the div below with your own image. Example: --> <!-- <img src="your-image-url.jpg" alt="About us" style="width: 100%; height: 300px; border-radius: 8px; object-fit: cover;"> -->
+      <div class="about-image" id="about-image-placeholder">
+       📸
+      </div><!-- ========== END IMAGE PLACEHOLDER ========== -->
+     </div>
+    </section><!-- Menu Section -->
     <section id="menu">
-        <h2>Menu</h2>
-        <ul>
-            <li>Pica Margherita - $10</li>
-            <li>Pica Peperoni - $12</li>
-            <li>Pica Vegjetariane - $11</li>
-            <li>Pica Speciale - $15</li>
-        </ul>
+     <h2 id="menu-title">Menu</h2>
+     <div class="menu-grid">
+      <div class="menu-item">
+       <div class="menu-image">
+        🍕
+       </div>
+       <div class="menu-info">
+        <h3 id="menu-1-name">Margarita</h3>
+        <p id="menu-1-desc">Pica klasike me domate, mozzarella dhe baziliko</p>
+        <div class="price">
+         350 Lek
+        </div>
+       </div>
+      </div>
+      <div class="menu-item">
+       <div class="menu-image">
+        🍕
+       </div>
+       <div class="menu-info">
+        <h3 id="menu-2-name">Pepperoni</h3>
+        <p id="menu-2-desc">Pica me pepperoni të spikatur dhe mozzarella</p>
+        <div class="price">
+         450 Lek
+        </div>
+       </div>
+      </div>
+      <div class="menu-item">
+       <div class="menu-image">
+        🍕
+       </div>
+       <div class="menu-info">
+        <h3 id="menu-3-name">Vegeteriana</h3>
+        <p id="menu-3-desc">Pica me zarzavate të freskëta dhe djathë</p>
+        <div class="price">
+         400 Lek
+        </div>
+       </div>
+      </div>
+      <div class="menu-item">
+       <div class="menu-image">
+        🍕
+       </div>
+       <div class="menu-info">
+        <h3 id="menu-4-name">BBQ Chicken</h3>
+        <p id="menu-4-desc">Pica me pula, bacon dhe sos BBQ</p>
+        <div class="price">
+         480 Lek
+        </div>
+       </div>
+      </div>
+      <div class="menu-item">
+       <div class="menu-image">
+        🍕
+       </div>
+       <div class="menu-info">
+        <h3 id="menu-5-name">Katër Djathëra</h3>
+        <p id="menu-5-desc">Pica me katër lloje djathi premium</p>
+        <div class="price">
+         500 Lek
+        </div>
+       </div>
+      </div>
+      <div class="menu-item">
+       <div class="menu-image">
+        🍕
+       </div>
+       <div class="menu-info">
+        <h3 id="menu-6-name">Special New York</h3>
+        <p id="menu-6-desc">Pica ynë e veçantë me përzierje speciale mesataresh</p>
+        <div class="price">
+         550 Lek
+        </div>
+       </div>
+      </div>
+     </div><!-- Menu Display Section -->
+     <div class="menu-display-section">
+      <h3 id="menu-display-label" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #dc2626; margin-bottom: 1rem; text-align: center;">Menu Komplet</h3><!-- ========== MENU IMAGE PLACEHOLDER - EDIT THIS ========== --> <!-- Replace the div below with your menu image/PDF. Example: --> <!-- <img src="your-menu-image-url.jpg" alt="Full menu" style="width: 100%; border-radius: 8px;"> -->
+      <div class="menu-display-box" id="menu-display-placeholder">
+       📋
+      </div><!-- ========== END MENU IMAGE PLACEHOLDER ========== -->
+     </div>
+    </section><!-- Contact Section -->
+    <section id="contact">
+     <h2 id="contact-title">Na Kontaktoni</h2>
+     <div class="contact-info">
+      <div class="contact-item">
+       <div class="contact-item-icon">
+        📱
+       </div>
+       <h3 id="contact-phone-label">Telefoni</h3>
+       <p id="phone">+355 69 XXX XXXX</p>
+      </div>
+      <div class="contact-item">
+       <div class="contact-item-icon">
+        📍
+       </div>
+       <h3 id="contact-address-label">Adresa</h3>
+       <p id="address">Shkodër, Shqipëri</p>
+      </div>
+      <div class="contact-item">
+       <div class="contact-item-icon">
+        ⏰
+       </div>
+       <h3 id="contact-hours-label">Orët e Punës</h3>
+       <p id="hours">E hënë - E diel: 11:00 - 23:00</p>
+      </div>
+     </div>
     </section>
-    <section id="gallery">
-        <h2>Galeria Jonë</h2>
-        <img src="pizza1.jpg" alt="Pizza Margherita">
-        <img src="pizza2.jpg" alt="Pizza Peperoni">
-        <img src="pizza3.jpg" alt="Pizza Vegjetariane">
-    </section>
-    <section id="testimonials">
-        <h2>Çfarë thonë klientët tanë</h2>
-        <blockquote>
-            <p>"Pica më e mirë që kam provuar!"
-            <cite>— Klienti i lumtur</cite></p>
-        </blockquote>
-    </section>
-    <footer>
-        <h2>Na Kontaktoni</h2>
-        <p>Email: contact@picarestaurant.com</p>
-        <p>Telefon: +355 123 456 789</p>
-    </footer>
-</body>
+   </main><!-- Footer -->
+   <footer>
+    <p id="footer-copyright">© 2026 New York Pizza Shkodër. Te drejtat e rezervuara.</p>
+    <p id="footer-tagline">Shijë autentike në çdo pice! 🍕</p>
+    <div class="social-links"><a href="#" target="_blank">Facebook</a> <a href="#" target="_blank">Instagram</a> <a href="#" target="_blank">WhatsApp</a>
+    </div>
+   </footer>
+  </div>
+  <script>
+        // Translation system
+        const translations = {
+            sq: {
+                'nav-brand': 'New York Pizza',
+                'nav-menu': 'Menu',
+                'nav-about': 'Rreth Nesh',
+                'nav-contact': 'Na Kontaktoni',
+                'hero-title': 'New York Pizza',
+                'hero-subtitle': 'Pica autentike ne zemer te Shkodres',
+                'btn-order': 'Porosit Tani',
+                'about-title': 'Rreth Nesh',
+                'about-p1': 'Mirë se vini në New York Pizza, vendi ku tradita ndesh inovacionin! Në zemrën e Shkodër, ne sjellim të njëjtën spirit dhe shijen autentike të picave të famsshme të Nju Jorkut.',
+                'about-p2': 'Me më shumë se 15 vite përvojë, ekipi ynë përpunon çdo pice me ingredientë të freskëta. Vizitoni ne sot dhe zbuloni pse jam bërë preferenca e Shkodraneve',
+                'menu-title': 'Menu',
+                'menu-display-label': 'Menu Komplet',
+                'menu-1-name': 'Margarita',
+                'menu-1-desc': 'Pica klasike me domate, mozzarella dhe baziliko',
+                'menu-2-name': 'Pepperoni',
+                'menu-2-desc': 'Pica me pepperoni të spikatur dhe mozzarella',
+                'menu-3-name': 'Vegeteriana',
+                'menu-3-desc': 'Pica me zarzavate të freskëta dhe djathë',
+                'menu-4-name': 'BBQ Chicken',
+                'menu-4-desc': 'Pica me pula, bacon dhe sos BBQ',
+                'menu-5-name': 'Katër Djathëra',
+                'menu-5-desc': 'Pica me katër lloje djathi premium',
+                'menu-6-name': 'Special New York',
+                'menu-6-desc': 'Pica ynë e veçantë me përzierje speciale mesataresh',
+                'contact-title': 'Na Kontaktoni',
+                'contact-phone-label': 'Telefoni',
+                'contact-address-label': 'Adresa',
+                'contact-hours-label': 'Orët e Punës',
+                'footer-copyright': '© 2026 New York Pizza Shkodër. Te drejtat e rezervuara.',
+                'footer-tagline': 'Shijë autentike në çdo pice! 🍕'
+            },
+            en: {
+                'nav-brand': 'New York Pizza',
+                'nav-menu': 'Menu',
+                'nav-about': 'About Us',
+                'nav-contact': 'Contact Us',
+                'hero-title': 'New York Pizza',
+                'hero-subtitle': 'Authentic pizza in the heart of Shkodër',
+                'btn-order': 'Order Now',
+                'about-title': 'About Us',
+                'about-p1': 'Welcome to New York Pizza, where tradition meets innovation! In the heart of Shkodër, we bring the same spirit and authentic taste of the famous New York pizzas.',
+                'about-p2': 'With over 15 years of experience, our team crafts every pizza with fresh, quality ingredients. Visit us today and discover why we\'ve become the preference of Shkodër residents!',
+                'menu-title': 'Menu',
+                'menu-display-label': 'Full Menu',
+                'menu-1-name': 'Margarita',
+                'menu-1-desc': 'Classic pizza with tomato, mozzarella and basil',
+                'menu-2-name': 'Pepperoni',
+                'menu-2-desc': 'Pizza with prominent pepperoni and mozzarella',
+                'menu-3-name': 'Vegetarian',
+                'menu-3-desc': 'Pizza with fresh vegetables and cheese',
+                'menu-4-name': 'BBQ Chicken',
+                'menu-4-desc': 'Pizza with chicken, bacon and BBQ sauce',
+                'menu-5-name': 'Four Cheeses',
+                'menu-5-desc': 'Pizza with four types of premium cheese',
+                'menu-6-name': 'Special New York',
+                'menu-6-desc': 'Our special pizza with a special mix of toppings',
+                'contact-title': 'Contact Us',
+                'contact-phone-label': 'Phone',
+                'contact-address-label': 'Address',
+                'contact-hours-label': 'Hours',
+                'footer-copyright': '© 2026 New York Pizza Shkodër. All rights reserved.',
+                'footer-tagline': 'Authentic taste in every pizza! 🍕'
+            }
+        };
+
+        let currentLanguage = 'sq';
+
+        // Change language function
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+
+            // Update active button
+            document.getElementById('lang-sq').classList.remove('active');
+            document.getElementById('lang-en').classList.remove('active');
+            document.getElementById('lang-' + lang).classList.add('active');
+
+            // Update all text on page
+            Object.keys(translations[lang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            document.documentElement.lang = lang;
+        }
+
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            changeLanguage('sq');
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cc36dd0e28ed0f3',t:'MTc3MDgwODUzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
