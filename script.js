@@ -1,29 +1,55 @@
-// script.js
+// Interactive JavaScript features for New York Pizza
 
-// Function to display the current date and time
-function displayDateTime() {
-    const now = new Date();
-    const options = { timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-    const utcDateTime = now.toLocaleString('sv-SE', options);
-    document.getElementById('dateTime').innerHTML = `Current Date and Time (UTC): ${utcDateTime}`;
-}
+// Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
-// Function to update the menu based on user input
-function updateMenu() {
-    const menuItem = document.getElementById('menuItem').value;
-    const menuDiv = document.getElementById('menu');
-    const newItem = document.createElement('div');
-    newItem.innerText = menuItem;
-    menuDiv.appendChild(newItem);
-    document.getElementById('menuItem').value = '';
-}
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
 
-// Event listener for date/time display
-window.onload = function() {
-    displayDateTime();
-};
+// Mobile Menu Toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu');
 
-// Example action when button is clicked
-document.getElementById('addMenuButton').onclick = function() {
-    updateMenu();
-};
+menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+});
+
+// Form Validation
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+    const name = document.querySelector('#name');
+    if (name.value === '') {
+        e.preventDefault();
+        alert('Name is required');
+    }
+});
+
+// Image Lazy Loading
+const lazyImages = document.querySelectorAll('img.lazy');
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+            observer.unobserve(img);
+        }
+    });
+});
+
+lazyImages.forEach(image => {
+    imageObserver.observe(image);
+});
+
+// Dynamic Interactions
+const dynamicElements = document.querySelectorAll('.dynamic');
+dynamicElements.forEach(element => {
+    element.addEventListener('click', () => {
+        element.classList.toggle('active');
+    });
+});
