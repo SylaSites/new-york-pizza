@@ -189,38 +189,27 @@
         }
 
         /* About Section */
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap; /* for mobile */
+}
 
-        .about-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            line-height: 1.8;
-        }
+.about-content {
+    flex: 1 1 60%; /* text takes left side */
+}
 
-        .about-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
+.about-image {
+    flex: 0 0 auto; /* image does not shrink below its width */
+}
 
-        .about-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #9ca3af;
-            border: 2px dashed #9ca3af;
-        }
+.about-image img {
+    width: 300px; /* adjust smaller if needed */
+    height: auto;
+    object-fit: contain; /* keep the whole logo visible */
+}
 
         /* Menu Section */
         .menu-grid {
@@ -357,10 +346,13 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
+@media (max-width: 768px) {
+    .about-image {
+        width: 100%;
+        height: 300px;
+    }
+}
+
 
             .nav-links {
                 gap: 1rem;
@@ -437,15 +429,16 @@
    <main><!-- About Section -->
     <section id="about">
      <h2 id="about-title">Rreth Nesh</h2>
-     <div class="about-container">
-      <div class="about-content">
-       <p id="about-p1">Mirë se vini në New York Pizza! Në zemrën e Shkodër, ne sjellim të njëjtën spirit dhe shijen autentike të picave të famshme të Nju Jorkut.</p>
-       <p id="about-p2">Me më shumë se 15 vite përvojë, ekipi ynë përpunon çdo pice me ingredientë të freskëta. Vizitoni ne sot dhe zbuloni pse jam bërë preferenca e Shkodraneve!</p>
-      </div><!-- ========== IMAGE PLACEHOLDER - EDIT THIS ========== --> <!-- Replace the div below with your own image. Example: --> <!-- <img src="your-image-url.jpg" alt="About us" style="width: 100%; height: 300px; border-radius: 8px; object-fit: cover;"> -->
-      <div class="about-image" id="about-image-placeholder">
-        <img src="hero.jpeg" alt="hero image" style="width:100%;height:100%;object-fit:cover;">
-      </div><!-- ========== END IMAGE PLACEHOLDER ========== -->
-     </div>
+<div class="about-container">
+  <div class="about-content">
+    <p id="about-p1">Mirë se vini në New York Pizza! Në zemrën e Shkodër, ne sjellim të njëjtën spirit dhe shijen autentike të picave të famshme të Nju Jorkut.</p>
+    <p id="about-p2">Me më shumë se 15 vite përvojë, ekipi ynë përpunon çdo pice me ingredientë të freskëta. Vizitoni ne sot dhe zbuloni pse jam bërë preferenca e Shkodraneve!</p>
+  </div>
+  <div class="about-image">
+    <img src="hero.jpeg" alt="hero image">
+  </div>
+</div>
+
     </section><!-- Menu Section -->
     <section id="menu">
      <h2 id="menu-title">Galeria</h2>
